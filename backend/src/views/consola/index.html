@@ -388,6 +388,7 @@
       <input id="admin-password" name="password" type="password" autocomplete="current-password" required />
       <div class="auth-error" id="admin-login-error" role="alert"></div>
       <button class="btn btn-primary" type="submit" style="width:100%; margin-top:0.75rem;">Entrar a la consola</button>
+      <button class="btn btn-ghost" id="admin-magic-link" type="button" style="width:100%; margin-top:0.5rem;">Enviar enlace mágico</button>
     </form>
   </section>
 
@@ -757,6 +758,22 @@
       const { error } = await supabase.auth.signInWithPassword({
         email: form.get("email"),
         password: form.get("password")
+      });
+
+      document.getElementById("admin-magic-link").addEventListener("click", async () => {
+        const email = document.getElementById("admin-email").value.trim();
+        const errorElement = document.getElementById("admin-login-error");
+        if (!email) {
+          errorElement.textContent = "Escribe tu correo para recibir el enlace.";
+          return;
+        }
+        const { error } = await supabase.auth.signInWithOtp({
+          email,
+          options: { emailRedirectTo: `${window.location.origin}/consola` }
+        });
+        errorElement.textContent = error
+          ? "No se pudo enviar el enlace mágico."
+          : "Revisa tu correo para continuar.";
       });
       if (error) {
         errorElement.textContent = "No se pudo iniciar sesión. Verifica tus credenciales.";
