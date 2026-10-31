@@ -135,17 +135,21 @@ router.put("/:id", authenticateToken, requireAdmin, async (req, res) => {
   }
 
   Object.assign(book, updates);
-  if (updates.priceCOP) {
+  if (updates.priceCOP !== undefined) {
     book.price = book.price || {};
     book.price.COP = Number(updates.priceCOP);
+  }
+  if (updates.priceUSD !== undefined) {
+    book.price = book.price || {};
+    book.price.USD = Number(updates.priceUSD);
   }
 
   if (isDbConnected()) {
     try {
       const pool = getDbPool();
       await pool.query(
-        "UPDATE books SET title = COALESCE($1, title), author = COALESCE($2, author), stock = COALESCE($3, stock), price_cop = COALESCE($4, price_cop) WHERE id = $5",
-        [updates.title, updates.author, updates.stock, updates.priceCOP, id]
+        "UPDATE books SET title = COALESCE($1, title), author = COALESCE($2, author), stock = COALESCE($3, stock), price_cop = COALESCE($4, price_cop), price_usd = COALESCE($5, price_usd), description = COALESCE($6, description), genre = COALESCE($7, genre), genre_label = COALESCE($8, genre_label), cover = COALESCE($9, cover) WHERE id = $10",
+        [updates.title, updates.author, updates.stock, updates.priceCOP, updates.priceUSD, updates.description, updates.genre, updates.genreLabel, updates.cover, id]
       );
     } catch (e) {
       console.warn("DB update fallback:", e.message);

@@ -1,5 +1,7 @@
 // BOOKVERSE - Catálogo central de libros con Sincronización API & LocalStorage
 import { Storage } from "../storage.js";
+import { authHeaders } from "../supabase.js";
+import { apiUrl } from "../api.js";
 
 const DEFAULT_BOOKS = [
   {
@@ -311,7 +313,7 @@ export function getBooksByGenre(genre) {
 // Sincronización con Backend Express
 export async function syncCatalogWithApi() {
   try {
-    const res = await fetch("/api/books");
+    const res = await fetch(apiUrl("/api/books"));
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data.books) && data.books.length > 0) {
@@ -365,15 +367,15 @@ export async function saveBookToCatalog(bookData) {
 
   // Enviar a la API del backend
   try {
-    await fetch("/api/books", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-key": "bookverse-admin-2026"
-      },
+    const headers = { "Content-Type": "application/json", ...(await authHeaders()) };
+    await fetch(apiUrl(existingIdx > -1 ? `/api/books/${bookData.id}` : "/api/books"), {
+      method: existingIdx > -1 ? "PUT" : "POST",
+      headers,
       body: JSON.stringify(bookData)
     });
-  } catch (e) {}
+  } catch (e) {
+    console.warn("No se pudo guardar el libro en la API:", e.message);
+  }
 
   return books;
 }
@@ -385,13 +387,14 @@ export async function removeBookFromCatalog(id) {
   document.dispatchEvent(new CustomEvent("bookverse:catalog-updated", { detail: books }));
 
   try {
-    await fetch(`/api/books/${id}`, {
+    const headers = await authHeaders();
+    await fetch(apiUrl(`/api/books/${id}`), {
       method: "DELETE",
-      headers: {
-        "x-admin-key": "bookverse-admin-2026"
-      }
+      headers
     });
-  } catch (e) {}
+  } catch (e) {
+    console.warn("No se pudo eliminar el libro en la API:", e.message);
+  }
 
   return books;
 }

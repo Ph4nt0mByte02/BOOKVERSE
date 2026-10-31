@@ -105,9 +105,9 @@ Cuenta con un **menú lateral en la parte izquierda** con todos los módulos de 
 7. ⚙️ **PostgreSQL Docker:** Diagnóstico de conexión y estado del motor de base de datos.
 8. 🚪 **Volver a la Tienda:** Regreso directo al catálogo público.
 
-**Credenciales de Administrador:**
-- Usuario: `admin@bookverse.com`
-- Contraseña: `AdminBookverse2026!`
+**Autenticación:** la consola usa Supabase Auth. Crea el usuario desde Supabase
+Auth y asigna `role: "admin"` en `app_metadata` desde un entorno seguro. No
+existen credenciales administrativas embebidas en el código.
 
 ---
 
@@ -125,7 +125,8 @@ El proyecto incorpora las mejores prácticas internacionales de optimización pa
 
 - **Cabeceras HTTP de Protección:** Implementación de `helmet` contra ataques XSS, clickjacking y MIME-sniffing.
 - **CORS Configurado:** Control estricto de orígenes permitidos.
-- **Autenticación Cifrada:** Tokens JWT y contraseñas protegidas con `bcryptjs`.
+- **Autenticación Supabase:** sesión persistente en el frontend y validación de JWT
+  en backend mediante JWKS.
 - **Validación de Entradas:** Filtrado de datos de entrada y prevención de SQL Injection mediante consultas parametrizadas en PostgreSQL (`$1, $2, ...`).
 
 ---
@@ -143,5 +144,16 @@ La suite valida:
 - Salud del servicio (`/api/health`)
 - Consulta del catálogo (`/api/books`)
 - Ficha individual de producto (`/api/books/:id`)
-- Autenticación de administradores con generación de JWT
+- Protección de endpoints administrativos sin token
 - Registro y cálculo de pedidos de checkout (`/api/orders`)
+
+## 🔑 7. Supabase y despliegues separados
+
+Ejecuta `supabase/migrations/001_bookverse.sql` en el SQL Editor de Supabase.
+Después crea un usuario en Supabase Auth y establece `app_metadata.role = "admin"`
+desde una operación segura de servidor. La consola valida ese rol en cada acceso.
+
+El backend necesita `SUPABASE_URL` y `SUPABASE_JWKS_URL` en sus variables privadas.
+Nunca publiques una secret/service-role key. Si GitHub Pages y la API están en
+dominios distintos, define `window.BOOKVERSE_API_URL` antes de cargar los módulos
+frontend para que `/api/*` apunte al backend desplegado.
