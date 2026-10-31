@@ -10,7 +10,7 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/consola/",
+      "source": "/consola/:path*",
       "destination": "/api/index.js"
     }
   ]
