@@ -79,6 +79,8 @@ create policy "Admins can manage books"
   on public.books for all using (public.is_admin()) with check (public.is_admin());
 create policy "Customers can create orders"
   on public.orders for insert with check (customer_id = auth.uid() or customer_id is null);
+create policy "Admins can manage orders"
+  on public.orders for all using (public.is_admin()) with check (public.is_admin());
 create policy "Customers can read own orders"
   on public.orders for select using (customer_id = auth.uid() or public.is_admin());
 create policy "Customers can read their order items"
@@ -89,6 +91,16 @@ create policy "Customers can read their order items"
       and (orders.customer_id = auth.uid() or public.is_admin())
     )
   );
+create policy "Customers can create order items"
+  on public.order_items for insert with check (
+    exists (
+      select 1 from public.orders
+      where orders.id = order_items.order_id
+      and (orders.customer_id = auth.uid() or orders.customer_id is null or public.is_admin())
+    )
+  );
+create policy "Admins can manage order items"
+  on public.order_items for all using (public.is_admin()) with check (public.is_admin());
 
 create or replace function public.handle_new_user()
 returns trigger

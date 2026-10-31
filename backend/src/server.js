@@ -11,6 +11,7 @@ import authRoutes from "./routes/auth.routes.js";
 import booksRoutes from "./routes/books.routes.js";
 import ordersRoutes from "./routes/orders.routes.js";
 import { testConnection, isDbConnected } from "./config/db.js";
+import { isSupabaseConfigured } from "./config/supabase.js";
 
 dotenv.config();
 
@@ -39,7 +40,9 @@ app.get("/api/health", (req, res) => {
     status: "OK",
     service: "BOOKVERSE API & Admin Engine",
     timestamp: new Date().toISOString(),
-    database: isDbConnected() ? "PostgreSQL Docker Connected" : "In-Memory Resilient Store",
+    database: isSupabaseConfigured()
+      ? "Supabase REST connected"
+      : (isDbConnected() ? "PostgreSQL Docker Connected" : "In-Memory Resilient Store"),
     version: "1.0.0"
   });
 });
@@ -63,7 +66,8 @@ app.get("*", (req, res, next) => {
 });
 
 // Iniciar Servidor y Probar Base de Datos
-app.listen(PORT, async () => {
+if (!process.env.VERCEL) {
+  app.listen(PORT, async () => {
   console.log(`\n======================================================`);
   console.log(`🚀 BOOKVERSE Servidor ejecutándose en http://localhost:${PORT}`);
   console.log(`📚 Tienda Principal:  http://localhost:${PORT}/index.html`);
@@ -71,7 +75,8 @@ app.listen(PORT, async () => {
   console.log(`🩺 Health API:        http://localhost:${PORT}/api/health`);
   console.log(`======================================================\n`);
 
-  await testConnection();
-});
+    await testConnection();
+  });
+}
 
 export default app;

@@ -7,6 +7,7 @@ dotenv.config();
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_JWKS_URL = process.env.SUPABASE_JWKS_URL ||
   (SUPABASE_URL ? `${SUPABASE_URL}/auth/v1/.well-known/jwks.json` : null);
+const SUPABASE_ADMIN_USER_ID = process.env.SUPABASE_ADMIN_USER_ID;
 const jwks = SUPABASE_JWKS_URL ? createRemoteJWKSet(new URL(SUPABASE_JWKS_URL)) : null;
 
 export async function authenticateToken(req, res, next) {
@@ -28,8 +29,9 @@ export async function authenticateToken(req, res, next) {
       id: payload.sub,
       email: payload.email,
       name: payload.user_metadata?.name || payload.email,
-      role: metadata.role || "user"
+      role: metadata.role === "admin" || payload.sub === SUPABASE_ADMIN_USER_ID ? "admin" : "user"
     };
+    req.user.accessToken = token;
     next();
   } catch (error) {
     return res.status(401).json({ success: false, message: "Token de Supabase inválido o expirado" });

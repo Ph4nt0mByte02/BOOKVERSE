@@ -154,6 +154,8 @@ Después crea un usuario en Supabase Auth y establece `app_metadata.role = "admi
 desde una operación segura de servidor. La consola valida ese rol en cada acceso.
 
 El backend necesita `SUPABASE_URL` y `SUPABASE_JWKS_URL` en sus variables privadas.
-Nunca publiques una secret/service-role key. Si GitHub Pages y la API están en
-dominios distintos, define `window.BOOKVERSE_API_URL` antes de cargar los módulos
-frontend para que `/api/*` apunte al backend desplegado.
+Nunca publiques una secret/service-role key. GitHub Pages apunta por defecto a `https://bookverse-mauve.vercel.app`; para otra
+instancia, define `window.BOOKVERSE_API_URL` antes de cargar los módulos frontend.
+En Vercel, el proyecto debe usar la raíz del repositorio como **Root Directory**.
+No configures `backend` como raíz: `api/index.js` es el adaptador serverless y
+`vercel.json` conserva el frontend estático junto con `/api` y `/consola`.
