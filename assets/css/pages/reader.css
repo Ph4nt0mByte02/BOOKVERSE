@@ -1,0 +1,74 @@
+/* BOOKVERSE - Experiencia de Lectura Digital (Lector In-Browser) */
+
+.reader-container {
+  max-width: 780px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: var(--reader-bg, #ffffff);
+  color: var(--reader-color, #242720);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  border: 1px solid var(--color-border, #E5E0D6);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.reader-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border, #E5E0D6);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.reader-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.reader-btn {
+  background: transparent;
+  border: 1px solid var(--color-border, #E5E0D6);
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.reader-theme-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
+.theme-light { background: #ffffff; }
+.theme-sepia { background: #F7F4EC; }
+.theme-dark { background: #1a1b18; }
+
+.reader-body {
+  font-family: var(--font-editorial, serif);
+  font-size: var(--reader-font-size, 1.25rem);
+  line-height: var(--reader-line-height, 1.8);
+}
+
+.reader-body p {
+  margin-bottom: 1.5rem;
+  text-indent: 1.5rem;
+}
+
+/* Themes applied to container */
+.reader-container[data-theme="sepia"] {
+  --reader-bg: #F7F4EC;
+  --reader-color: #2b2b25;
+}
+
+.reader-container[data-theme="dark"] {
+  --reader-bg: #1c1d1a;
+  --reader-color: #e2e0d8;
+  border-color: #333630;
+}

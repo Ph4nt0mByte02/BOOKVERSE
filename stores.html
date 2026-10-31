@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiendas Físicas y Sucursales — BOOKVERSE</title>
+  <meta name="description" content="Conoce las sedes físicas de BOOKVERSE en Bogotá, Medellín y Cali. Café de especialidad, clubes de lectura y recogida express Click & Collect." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="assets/css/pages/home.css" />
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar" role="region">
+    <span data-i18n="announcement">Envíos gratis en pedidos superiores a $120.000 COP • Lectura digital inmediata</span>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="logo">📖 BOOKVERSE</a>
+
+      <nav class="nav-main" role="navigation">
+        <a href="index.html" data-i18n="home">Inicio</a>
+        <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+        <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+        <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        <a href="discover.html" data-i18n="discover">Descubrir</a>
+        <a href="stores.html" class="is-active" data-i18n="stores">Tiendas</a>
+        <a href="reader.html" data-i18n="readSample">Lector</a>
+        <a href="/consola" style="color:var(--color-terracotta); font-weight:600;" data-i18n="adminConsole">Consola Admin</a>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box search-form" id="global-search-form" role="search">
+          <span class="search-icon">🔍</span>
+          <input type="search" class="search-input" name="q" placeholder="Buscar libros, autores..." data-i18n-placeholder="searchPlaceholder" />
+        </form>
+
+        <select class="lang-select" aria-label="Idioma" id="lang-selector">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+          <option value="hi">HI</option>
+          <option value="pt">PT</option>
+        </select>
+
+        <a href="favorites.html" class="header-icon-btn" aria-label="Favoritos">♥ <span class="badge wishlist-badge" style="display:none;">0</span></a>
+        <a href="cart.html" class="header-icon-btn" aria-label="Carrito">🛒 <span class="badge cart-badge" style="display:none;">0</span></a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container" style="padding-block: 2.5rem;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Migas de pan" style="font-size:0.875rem; color:var(--color-muted); margin-bottom:1.5rem;">
+      <a href="index.html" style="color:var(--color-muted); text-decoration:none;">Inicio</a> / 
+      <span style="color:var(--color-ink); font-weight:500;">Nuestras Librerías Físicas</span>
+    </nav>
+
+    <div class="section-header" style="text-align:left; margin-bottom:2rem;">
+      <h1 style="font-family:var(--font-editorial); font-size:2.5rem;">Nuestras Librerías</h1>
+      <p style="color:var(--color-muted); font-size:1.125rem;">
+        Espacios diseñados para perderse entre páginas, disfrutar de café de origen y conversar sobre literatura.
+      </p>
+    </div>
+
+    <!-- Store Branches Grid -->
+    <div style="display:flex; flex-direction:column; gap:2.5rem;">
+
+      <!-- Sede Bogotá -->
+      <article id="store-001" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.05);">
+        <img src="https://images.unsplash.com/photo-521587765099-8835b7231082?w=800&h=500&fit=crop" alt="Librería Bogotá Quinta Camacho" style="width:100%; height:100%; min-height:260px; object-fit:cover;" />
+        <div style="padding:2rem; display:flex; flex-direction:column; justify-content:center; gap:0.75rem;">
+          <span style="font-size:0.8125rem; font-weight:600; color:var(--color-forest); text-transform:uppercase;">Sede Principal</span>
+          <h2 style="font-family:var(--font-editorial); font-size:1.75rem; margin:0;">BOOKVERSE Quinta Camacho</h2>
+          <div style="color:var(--color-muted);">📍 Calle 70 # 9-45, Chapinero, Bogotá</div>
+          <div style="color:var(--color-ink);">🕐 <strong>Horario:</strong> Lunes a Sábado: 9:00 – 20:00 | Domingo: 10:00 – 18:00</div>
+          <div style="color:var(--color-ink);">📞 +57 (601) 345-6789</div>
+          
+          <div style="margin-top:0.75rem;">
+            <strong style="font-size:0.875rem;">Servicios en sede:</strong>
+            <ul style="margin:0.5rem 0 0 1.25rem; font-size:0.875rem; color:var(--color-muted); line-height:1.6;">
+              <li>Cafetería de Especialidad & Repostería artesanal</li>
+              <li>Punto de recogida Click & Collect (entrega en 2h si está en stock)</li>
+              <li>Salón de lectura silenciosa y wifi de alta velocidad</li>
+              <li>Club de lectura el primer jueves de cada mes</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sede Medellín -->
+      <article id="store-002" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.05);">
+        <img src="https://images.unsplash.com/photo-507842229438-c0379366367f?w=800&h=500&fit=crop" alt="Librería Medellín El Poblado" style="width:100%; height:100%; min-height:260px; object-fit:cover;" />
+        <div style="padding:2rem; display:flex; flex-direction:column; justify-content:center; gap:0.75rem;">
+          <span style="font-size:0.8125rem; font-weight:600; color:var(--color-terracotta); text-transform:uppercase;">Sucursal Antioquia</span>
+          <h2 style="font-family:var(--font-editorial); font-size:1.75rem; margin:0;">BOOKVERSE El Poblado</h2>
+          <div style="color:var(--color-muted);">📍 Carrera 43A # 5A-113, Patio Bonito, Medellín</div>
+          <div style="color:var(--color-ink);">🕐 <strong>Horario:</strong> Lunes a Sábado: 9:30 – 20:30 | Domingo: 11:00 – 18:00</div>
+          <div style="color:var(--color-ink);">📞 +57 (604) 448-1234</div>
+          
+          <div style="margin-top:0.75rem;">
+            <strong style="font-size:0.875rem;">Servicios en sede:</strong>
+            <ul style="margin:0.5rem 0 0 1.25rem; font-size:0.875rem; color:var(--color-muted); line-height:1.6;">
+              <li>Terraza literaria al aire libre</li>
+              <li>Mesa de novedades y recomendaciones del librero</li>
+              <li>Punto de recogida express</li>
+              <li>Zona infantil de lectura</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sede Cali -->
+      <article id="store-003" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.05);">
+        <img src="https://images.unsplash.com/photo-526243447037-446d07fabbfb?w=800&h=500&fit=crop" alt="Librería Cali Ciudad Jardín" style="width:100%; height:100%; min-height:260px; object-fit:cover;" />
+        <div style="padding:2rem; display:flex; flex-direction:column; justify-content:center; gap:0.75rem;">
+          <span style="font-size:0.8125rem; font-weight:600; color:var(--color-gold); text-transform:uppercase;">Sucursal Valle</span>
+          <h2 style="font-family:var(--font-editorial); font-size:1.75rem; margin:0;">BOOKVERSE Ciudad Jardín</h2>
+          <div style="color:var(--color-muted);">📍 Avenida San Joaquín # 14-88, Cali</div>
+          <div style="color:var(--color-ink);">🕐 <strong>Horario:</strong> Lunes a Sábado: 10:00 – 20:00 | Domingo: 11:00 – 17:00</div>
+          <div style="color:var(--color-ink);">📞 +57 (602) 312-9876</div>
+          
+          <div style="margin-top:0.75rem;">
+            <strong style="font-size:0.875rem;">Servicios en sede:</strong>
+            <ul style="margin:0.5rem 0 0 1.25rem; font-size:0.875rem; color:var(--color-muted); line-height:1.6;">
+              <li>Jardín botánico de lectura y sombra</li>
+              <li>Punto de recogida Click & Collect</li>
+              <li>Talleres mensuales de escritura creativa</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>📖 BOOKVERSE</h3>
+          <p data-i18n="footerAbout">Librería editorial que une la experiencia física y digital en un solo lugar.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerNavTitle">Navegación</h4>
+          <a href="index.html" data-i18n="home">Inicio</a>
+          <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+          <a href="discover.html" data-i18n="discover">Descubrir</a>
+          <a href="stores.html" data-i18n="stores">Tiendas físicas</a>
+          <a href="reader.html" data-i18n="readSample">Lector web</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerFormatsTitle">Formatos</h4>
+          <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+          <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerHelpTitle">Ayuda</h4>
+          <a href="help.html">Preguntas frecuentes</a>
+          <a href="/consola" style="color:var(--color-gold);">Consola Admin</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footerRights">© 2026 BOOKVERSE. Todos los derechos reservados. Proyecto demostrativo.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

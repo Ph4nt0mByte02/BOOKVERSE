@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito de Compras — BOOKVERSE</title>
+  <meta name="description" content="Revisa tu selección de libros físicos y electrónicos antes de completar tu pedido simulado." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="assets/css/pages/cart.css" />
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar" role="region">
+    <span data-i18n="announcement">Envíos gratis en pedidos superiores a $120.000 COP • Lectura digital inmediata</span>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="logo">📖 BOOKVERSE</a>
+
+      <nav class="nav-main" role="navigation">
+        <a href="index.html" data-i18n="home">Inicio</a>
+        <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+        <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+        <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        <a href="discover.html" data-i18n="discover">Descubrir</a>
+        <a href="stores.html" data-i18n="stores">Tiendas</a>
+        <a href="reader.html" data-i18n="readSample">Lector</a>
+        <a href="/consola" style="color:var(--color-terracotta); font-weight:600;" data-i18n="adminConsole">Consola Admin</a>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box search-form" id="global-search-form" role="search">
+          <span class="search-icon">🔍</span>
+          <input type="search" class="search-input" name="q" placeholder="Buscar libros, autores..." data-i18n-placeholder="searchPlaceholder" />
+        </form>
+
+        <select class="lang-select" aria-label="Idioma" id="lang-selector">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+          <option value="hi">HI</option>
+          <option value="pt">PT</option>
+        </select>
+
+        <a href="favorites.html" class="header-icon-btn" aria-label="Favoritos">♥ <span class="badge wishlist-badge" style="display:none;">0</span></a>
+        <a href="cart.html" class="header-icon-btn is-active" aria-label="Carrito">🛒 <span class="badge cart-badge" style="display:none;">0</span></a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container" style="padding-block: 2.5rem;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Migas de pan" style="font-size:0.875rem; color:var(--color-muted); margin-bottom:1.5rem;">
+      <a href="index.html" style="color:var(--color-muted); text-decoration:none;">Inicio</a> / 
+      <span style="color:var(--color-ink); font-weight:500;">Carrito de compras</span>
+    </nav>
+
+    <h1 style="font-family:var(--font-editorial); font-size:2.25rem; margin-bottom:1.5rem;">Tu Carrito de Libros</h1>
+
+    <!-- Cart Layout -->
+    <div class="cart-layout" id="cart-main-layout">
+      <!-- Items Column -->
+      <section class="cart-items-container" id="cart-items-list" aria-label="Artículos del carrito">
+        <!-- Rendered by JS -->
+      </section>
+
+      <!-- Summary Column -->
+      <aside class="cart-summary-card" aria-label="Resumen de compra">
+        <h2 class="cart-summary-title">Resumen del Pedido</h2>
+        
+        <div class="cart-summary-row">
+          <span>Subtotal artículos:</span>
+          <strong id="cart-subtotal-val">$0 COP</strong>
+        </div>
+
+        <div class="cart-summary-row">
+          <span>Envío estimado:</span>
+          <span id="cart-shipping-val" style="color:var(--color-success); font-weight:500;">Gratis</span>
+        </div>
+
+        <div class="cart-summary-row" style="font-size:0.8125rem; color:var(--color-muted);">
+          <span>Impuestos incluidos (IVA 19%)</span>
+          <span>$0 COP</span>
+        </div>
+
+        <div class="cart-summary-row cart-summary-total">
+          <span>Total a pagar:</span>
+          <span id="cart-total-val" style="color:var(--color-forest);">$0 COP</span>
+        </div>
+
+        <button class="btn btn-primary" id="btn-open-checkout" style="width:100%; margin-top:1.5rem; padding:0.875rem; font-size:1rem;" data-i18n="checkout">
+          Proceder a la compra
+        </button>
+
+        <div style="font-size:0.75rem; color:var(--color-muted); text-align:center; margin-top:1rem;">
+          🔒 Simulación de compra segura. Sin cargos reales.
+        </div>
+      </aside>
+    </div>
+
+    <!-- Empty State -->
+    <div class="catalog-empty" id="cart-empty-state" style="display:none; padding:5rem 1rem;">
+      <div style="font-size:3.5rem; margin-bottom:1rem;">🛒</div>
+      <h2 style="font-family:var(--font-editorial); font-size:1.75rem;" data-i18n="emptyCartTitle">Tu carrito está vacío</h2>
+      <p style="color:var(--color-muted); max-width:400px; margin:0.5rem auto 1.5rem;" data-i18n="emptyCartDesc">
+        Parece que aún no has seleccionado tu próxima lectura. Explora nuestras colecciones editoriales y libros recomendados.
+      </p>
+      <a href="catalog.html" class="btn btn-primary" data-i18n="goToCatalog">Explorar catálogo</a>
+    </div>
+
+    <!-- Simulated Checkout Modal -->
+    <div id="checkout-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:10000; align-items:center; justify-content:center; padding:1rem;">
+      <div style="background:var(--color-surface, #ffffff); border-radius:12px; max-width:540px; width:100%; padding:2rem; box-shadow:0 20px 40px rgba(0,0,0,0.2); max-height:90vh; overflow-y:auto; border:1px solid var(--color-border);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+          <h2 style="font-family:var(--font-editorial); font-size:1.5rem; margin:0;">Finalizar Compra (Simulación)</h2>
+          <button id="btn-close-modal" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">✕</button>
+        </div>
+
+        <form id="checkout-form" onsubmit="event.preventDefault(); window.confirmOrderSimulation();">
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            <div>
+              <label style="display:block; font-size:0.875rem; font-weight:600; margin-bottom:0.25rem;">Nombre completo</label>
+              <input type="text" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:4px;" value="Lector Apasionado" />
+            </div>
+
+            <div>
+              <label style="display:block; font-size:0.875rem; font-weight:600; margin-bottom:0.25rem;">Correo electrónico (para envío de ebooks y factura)</label>
+              <input type="email" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:4px;" value="lector@ejemplo.com" />
+            </div>
+
+            <div>
+              <label style="display:block; font-size:0.875rem; font-weight:600; margin-bottom:0.25rem;">Método de Entrega para Libros Físicos</label>
+              <select style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:4px;">
+                <option value="shipping">Envío a Domicilio Express (24-48h)</option>
+                <option value="pickup-1">Recogida Click & Collect — Bogotá Chapinero</option>
+                <option value="pickup-2">Recogida Click & Collect — Medellín El Poblado</option>
+                <option value="pickup-3">Recogida Click & Collect — Cali Ciudad Jardín</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="display:block; font-size:0.875rem; font-weight:600; margin-bottom:0.25rem;">Dirección de Entrega</label>
+              <input type="text" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:4px;" value="Calle 72 # 10-34, Apt 402" />
+            </div>
+
+            <div style="background:#faf8f2; padding:1rem; border-radius:6px; border:1px solid var(--color-border);">
+              <div style="display:flex; justify-content:space-between; font-weight:600;">
+                <span>Total a Confirmar:</span>
+                <span id="modal-total-display" style="color:var(--color-forest); font-family:var(--font-editorial); font-size:1.25rem;">$0 COP</span>
+              </div>
+              <div style="font-size:0.75rem; color:var(--color-muted); margin-top:0.5rem;">
+                ⚠️ Este es un entorno de demostración. No se realizará ningún cobro monetario real.
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="padding:0.875rem; font-size:1rem; width:100%; margin-top:0.5rem;">
+              ✓ Confirmar Pedido de Demostración
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Order Confirmed Screen -->
+    <div id="order-success-card" style="display:none; text-align:center; padding:4rem 2rem; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; max-width:620px; margin:2rem auto; box-shadow:0 12px 30px rgba(0,0,0,0.06);">
+      <div style="font-size:4rem; color:var(--color-success); margin-bottom:1rem;">🎉</div>
+      <h2 style="font-family:var(--font-editorial); font-size:2rem; margin-bottom:0.5rem;">¡Pedido Confirmado con Éxito!</h2>
+      <p style="color:var(--color-muted); margin-bottom:1.5rem;">Número de referencia: <strong id="confirmed-order-number" style="color:var(--color-forest);">BV-2026-9481</strong></p>
+      <p style="line-height:1.6; color:var(--color-ink); max-width:480px; margin:0 auto 2rem;">
+        Hemos registrado tu solicitud de demostración. Tus libros electrónicos ya están disponibles para lectura en el <a href="reader.html" style="color:var(--color-forest); font-weight:600;">Lector Web</a> y tus ejemplares físicos están siendo preparados.
+      </p>
+      <div style="display:flex; justify-content:center; gap:1rem;">
+        <a href="reader.html" class="btn btn-secondary">Ir al Lector Digital</a>
+        <a href="catalog.html" class="btn btn-primary">Volver al Catálogo</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>📖 BOOKVERSE</h3>
+          <p data-i18n="footerAbout">Librería editorial que une la experiencia física y digital en un solo lugar.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerNavTitle">Navegación</h4>
+          <a href="index.html" data-i18n="home">Inicio</a>
+          <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+          <a href="discover.html" data-i18n="discover">Descubrir</a>
+          <a href="stores.html" data-i18n="stores">Tiendas físicas</a>
+          <a href="reader.html" data-i18n="readSample">Lector web</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerFormatsTitle">Formatos</h4>
+          <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+          <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerHelpTitle">Ayuda</h4>
+          <a href="help.html">Preguntas frecuentes</a>
+          <a href="/consola" style="color:var(--color-gold);">Consola Admin</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footerRights">© 2026 BOOKVERSE. Todos los derechos reservados. Proyecto demostrativo.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/pages/cart.js"></script>
+</body>
+</html>

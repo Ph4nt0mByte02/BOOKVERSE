@@ -1,0 +1,109 @@
+/* BOOKVERSE - Catálogo y Filtros */
+
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.catalog-sidebar {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #E5E0D6);
+  border-radius: var(--radius-md, 8px);
+  padding: 1.5rem;
+  position: sticky;
+  top: 5rem;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border, #E5E0D6);
+}
+
+.filter-group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.filter-title {
+  font-family: var(--font-interface, sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink, #242720);
+  margin-bottom: 0.75rem;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-ink, #242720);
+  cursor: pointer;
+}
+
+.filter-label input[type="radio"],
+.filter-label input[type="checkbox"] {
+  accent-color: var(--color-forest, #234B3D);
+}
+
+.catalog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.catalog-count {
+  font-size: 0.9375rem;
+  color: var(--color-muted, #777970);
+}
+
+.catalog-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.catalog-sort select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border, #E5E0D6);
+  border-radius: var(--radius-sm, 4px);
+  background: var(--color-surface, #ffffff);
+  font-family: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.catalog-empty {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: var(--color-surface, #ffffff);
+  border-radius: var(--radius-md, 8px);
+  border: 1px dashed var(--color-border, #E5E0D6);
+}
+
+.catalog-empty h3 {
+  font-family: var(--font-editorial, serif);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}

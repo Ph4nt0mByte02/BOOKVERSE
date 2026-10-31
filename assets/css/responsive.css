@@ -1,0 +1,52 @@
+/* BOOKVERSE - Responsive Design Utilities & Breakpoints */
+
+@media (max-width: 900px) {
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .header-nav {
+    display: none;
+    width: 100%;
+    order: 10;
+    flex-direction: column;
+    background: var(--color-surface, #ffffff);
+    padding: 1rem;
+    border-radius: var(--radius-md, 8px);
+    box-shadow: var(--shadow-md, 0 8px 16px rgba(0,0,0,0.08));
+    border: 1px solid var(--color-border, #E5E0D6);
+  }
+
+  .header-nav.is-open {
+    display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-container {
+    padding-inline: 1rem;
+  }
+
+  .catalog-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .product-detail-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cart-layout {
+    grid-template-columns: 1fr !important;
+  }
+}

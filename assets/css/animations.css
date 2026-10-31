@@ -1,0 +1,63 @@
+/* BOOKVERSE - Animaciones suaves y microinteracciones */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(189, 104, 75, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(189, 104, 75, 0);
+  }
+}
+
+@keyframes bookHoverFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.book-card {
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(36, 39, 32, 0.12);
+}
+
+.btn, .button-primary, .button-secondary {
+  transition: transform 150ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.btn:active, .button-primary:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

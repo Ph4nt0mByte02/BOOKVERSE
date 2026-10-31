@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle del Libro — BOOKVERSE</title>
+  <meta name="description" content="Detalle editorial, formatos disponibles físico y electrónico, precios, sinopsis y muestra de lectura." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="Detalle del Libro — BOOKVERSE" />
+  <meta property="og:description" content="Descubre este título en BOOKVERSE en formato físico y digital." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="assets/css/pages/product.css" />
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar" role="region">
+    <span data-i18n="announcement">Envíos gratis en pedidos superiores a $120.000 COP • Lectura digital inmediata</span>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="logo">📖 BOOKVERSE</a>
+
+      <nav class="nav-main" role="navigation">
+        <a href="index.html" data-i18n="home">Inicio</a>
+        <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+        <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+        <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        <a href="discover.html" data-i18n="discover">Descubrir</a>
+        <a href="stores.html" data-i18n="stores">Tiendas</a>
+        <a href="reader.html" data-i18n="readSample">Lector</a>
+        <a href="/consola" style="color:var(--color-terracotta); font-weight:600;" data-i18n="adminConsole">Consola Admin</a>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box search-form" id="global-search-form" role="search">
+          <span class="search-icon">🔍</span>
+          <input type="search" class="search-input" name="q" placeholder="Buscar libros, autores..." data-i18n-placeholder="searchPlaceholder" />
+        </form>
+
+        <select class="lang-select" aria-label="Idioma" id="lang-selector">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+          <option value="hi">HI</option>
+          <option value="pt">PT</option>
+        </select>
+
+        <a href="favorites.html" class="header-icon-btn" aria-label="Favoritos">♥ <span class="badge wishlist-badge" style="display:none;">0</span></a>
+        <a href="cart.html" class="header-icon-btn" aria-label="Carrito">🛒 <span class="badge cart-badge" style="display:none;">0</span></a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container" style="padding-block: 2rem;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Migas de pan" style="font-size:0.875rem; color:var(--color-muted); margin-bottom:1.5rem;">
+      <a href="index.html" style="color:var(--color-muted); text-decoration:none;">Inicio</a> / 
+      <a href="catalog.html" style="color:var(--color-muted); text-decoration:none;">Catálogo</a> / 
+      <span id="breadcrumb-title" style="color:var(--color-ink); font-weight:500;">Detalle</span>
+    </nav>
+
+    <!-- Product Detail Container -->
+    <section class="product-detail-layout" id="product-detail-section">
+      <!-- Left Column: Book Cover -->
+      <div class="product-cover-wrapper">
+        <img id="product-cover" src="assets/images/books/cien-anos-de-soledad.jpg" alt="Portada del libro" class="product-cover-img" />
+        <div style="margin-top:1.25rem; display:flex; justify-content:center; gap:0.5rem;">
+          <a id="btn-read-sample" href="reader.html" class="btn btn-secondary" style="width:100%;">
+            📖 Leer fragmento online
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Product Meta & Purchase -->
+      <div class="product-info">
+        <span class="product-genre-badge" id="product-genre">Ficción</span>
+        <h1 class="product-title" id="product-title">Cien Años de Soledad</h1>
+        <div class="product-author">Por <strong id="product-author">Gabriel García Márquez</strong></div>
+
+        <div class="product-rating">
+          <span style="color:#d6ad68;">★★★★★</span>
+          <span id="product-rating-val"><strong>4.9</strong></span>
+          <span style="color:var(--color-muted);" id="product-reviews-count">(328 valoraciones)</span>
+        </div>
+
+        <p id="product-description" style="line-height:1.7; color:var(--color-ink); font-size:1.0625rem;">
+          La obra cumbre del realismo mágico narra la historia de siete generaciones de la familia Buendía en el mítico pueblo de Macondo.
+        </p>
+
+        <!-- Selector de Formato -->
+        <div class="product-price-box">
+          <div style="font-size:0.875rem; font-weight:600; color:var(--color-muted);">SELECCIONA EL FORMATO:</div>
+          <div class="format-selector">
+            <div class="format-option is-selected" id="opt-format-physical" data-format="physical">
+              <div class="format-option-title">📕 Libro Físico</div>
+              <div class="format-option-price" id="price-physical">$65.000 COP</div>
+              <div style="font-size:0.75rem; color:var(--color-success); margin-top:0.25rem;" id="stock-status">✓ En stock (14 unidades)</div>
+            </div>
+            <div class="format-option" id="opt-format-ebook" data-format="ebook">
+              <div class="format-option-title">📱 Ebook Digital</div>
+              <div class="format-option-price" id="price-ebook">$48.750 COP</div>
+              <div style="font-size:0.75rem; color:var(--color-muted); margin-top:0.25rem;">Descarga y lectura inmediata</div>
+            </div>
+          </div>
+
+          <!-- Cantidad y Botón Añadir -->
+          <div class="product-actions">
+            <div class="qty-counter" id="qty-container">
+              <button class="qty-btn" id="btn-qty-minus">−</button>
+              <span class="qty-value" id="qty-display">1</span>
+              <button class="qty-btn" id="btn-qty-plus">+</button>
+            </div>
+
+            <button class="btn btn-primary" id="btn-add-to-cart" style="flex:1; font-size:1rem; padding:0.875rem;">
+              🛒 Añadir al carrito
+            </button>
+
+            <button class="btn btn-ghost" id="btn-toggle-favorite" style="padding:0.75rem 1rem; border:1px solid var(--color-border);" aria-label="Favoritos">
+              <span id="fav-icon" style="font-size:1.25rem;">♡</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Ficha Técnica -->
+        <div>
+          <h2 style="font-family:var(--font-editorial); font-size:1.25rem; margin-top:1.5rem; margin-bottom:0.75rem;">Detalles del Libro</h2>
+          <table class="product-meta-table">
+            <tbody>
+              <tr><th>Editorial</th><td id="meta-editorial">Editorial Sudamericana</td></tr>
+              <tr><th>ISBN</th><td id="meta-isbn">978-0307474728</td></tr>
+              <tr><th>Páginas</th><td id="meta-pages">471 páginas</td></tr>
+              <tr><th>Año de publicación</th><td id="meta-year">1967</td></tr>
+              <tr><th>Idioma</th><td id="meta-lang">Español</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Libros Relacionados -->
+    <section style="margin-top:4rem;">
+      <h2 style="font-family:var(--font-editorial); font-size:1.75rem; margin-bottom:1.5rem;">Obras Relacionadas</h2>
+      <div class="scroll-row" id="related-books-container">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>📖 BOOKVERSE</h3>
+          <p data-i18n="footerAbout">Librería editorial que une la experiencia física y digital en un solo lugar.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerNavTitle">Navegación</h4>
+          <a href="index.html" data-i18n="home">Inicio</a>
+          <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+          <a href="discover.html" data-i18n="discover">Descubrir</a>
+          <a href="stores.html" data-i18n="stores">Tiendas físicas</a>
+          <a href="reader.html" data-i18n="readSample">Lector web</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerFormatsTitle">Formatos</h4>
+          <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+          <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerHelpTitle">Ayuda</h4>
+          <a href="help.html">Preguntas frecuentes</a>
+          <a href="/consola" style="color:var(--color-gold);">Consola Admin</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footerRights">© 2026 BOOKVERSE. Todos los derechos reservados. Proyecto demostrativo.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/pages/product.js"></script>
+</body>
+</html>

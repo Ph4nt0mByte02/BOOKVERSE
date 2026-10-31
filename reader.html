@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lector Digital en Línea — BOOKVERSE</title>
+  <meta name="description" content="Lector en el navegador de BOOKVERSE. Lee fragmentos autorizados con control de temas sepia, claro y oscuro, y tamaño de fuente adaptable." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="assets/css/pages/reader.css" />
+</head>
+<body style="background:var(--color-paper, #F7F4EC);">
+
+  <!-- Header Simplificado para Lectura Inmersiva -->
+  <header style="background:var(--color-surface, #ffffff); border-bottom:1px solid var(--color-border); padding:0.75rem 1.5rem; display:flex; justify-content:space-between; align-items:center;">
+    <a href="catalog.html" style="text-decoration:none; color:var(--color-forest); font-weight:600; font-size:0.9375rem; display:flex; align-items:center; gap:0.5rem;">
+      ← Volver al Catálogo
+    </a>
+    <div style="font-family:var(--font-editorial); font-size:1.125rem;">📖 BOOKVERSE Reader</div>
+    <div style="font-size:0.8125rem; color:var(--color-muted);" id="reader-book-label">Lectura de Demostración</div>
+  </header>
+
+  <main class="page-container" style="padding-block: 2rem;">
+    <div class="reader-container" id="reader-box" data-theme="sepia">
+      <!-- Toolbar de Controles de Lectura -->
+      <div class="reader-toolbar">
+        <div class="reader-controls">
+          <span style="font-size:0.8125rem; font-weight:600; color:var(--color-muted);">TEMA:</span>
+          <button class="reader-theme-btn theme-sepia" id="theme-btn-sepia" title="Modo Sepia / Papel" aria-label="Modo Sepia"></button>
+          <button class="reader-theme-btn theme-light" id="theme-btn-light" title="Modo Claro" aria-label="Modo Claro"></button>
+          <button class="reader-theme-btn theme-dark" id="theme-btn-dark" title="Modo Nocturno" aria-label="Modo Nocturno"></button>
+        </div>
+
+        <div class="reader-controls">
+          <span style="font-size:0.8125rem; font-weight:600; color:var(--color-muted);">TAMAÑO:</span>
+          <button class="reader-btn" id="btn-font-decrease" aria-label="Reducir texto">A−</button>
+          <button class="reader-btn" id="btn-font-increase" aria-label="Aumentar texto">A+</button>
+        </div>
+
+        <div class="reader-controls">
+          <button class="reader-btn" id="btn-bookmark" style="display:flex; align-items:center; gap:0.25rem;">
+            🔖 Guardar Marcador
+          </button>
+        </div>
+      </div>
+
+      <!-- Encabezado del Libro -->
+      <header style="text-align:center; margin-bottom:2.5rem; padding-bottom:1.5rem; border-bottom:1px dashed var(--color-border);">
+        <div style="text-transform:uppercase; letter-spacing:0.1em; font-size:0.8125rem; color:var(--color-terracotta); font-weight:600; margin-bottom:0.5rem;" id="reader-chapter-title">
+          Capítulo 1
+        </div>
+        <h1 id="reader-title" style="font-family:var(--font-editorial); font-size:2.25rem; line-height:1.2; margin-bottom:0.5rem;">
+          Cien Años de Soledad
+        </h1>
+        <div id="reader-author" style="font-size:1.125rem; color:var(--color-muted); font-style:italic;">
+          Gabriel García Márquez
+        </div>
+      </header>
+
+      <!-- Cuerpo del Texto de Lectura -->
+      <article class="reader-body" id="reader-content-body">
+        <p>
+          Muchos años después, frente al pelotón de fusilamiento, el coronel Aureliano Buendía había de recordar aquella tarde remota en que su padre lo llevó a conocer el hielo. Macondo era entonces una aldea de veinte casas de barro y cañabrava construidas a la orilla de un río de aguas diáfanas que se precipitaban por un lecho de piedras pulidas, blancas y enormes como huevos prehistóricos.
+        </p>
+        <p>
+          El mundo era tan reciente, que muchas cosas carecían de nombre, y para mencionarlas había que señalarlas con el dedo. Todos los años, por el mes de marzo, una familia de gitanos desarrapados plantaba su carpa cerca de la aldea, y con un grande alboroto de pitos y timbales daban a conocer los nuevos inventos.
+        </p>
+        <p>
+          Primero llevaron el imán. Un gitano corpulento, de barba montaraz y manos de gorrión, que se presentó con el nombre de Melquíades, hizo una truculenta demostración pública de lo que él mismo llamaba la octava maravilla de los sabios alquimistas de Macedonia. Fue de casa en casa arrastrando dos lingotes metálicos, y todo el mundo se espantó al ver que los calderos, las pailas, las tenazas y los anafes se caían de su sitio, y las maderas crujían por la desesperación de los clavos y los tornillos tratando de desenclavarse.
+        </p>
+        <p>
+          «Las cosas tienen vida propia —pregonaba el gitano con áspero acento—, todo es cuestión de despertarles el ánima». José Arcadio Buendía, cuya desaforada imaginación iba siempre más lejos que el ingenio de la naturaleza, y aun más allá del milagro y la magia, pensó que era posible servirse de aquella invención inútil para desentrañar el oro de la tierra.
+        </p>
+      </article>
+
+      <!-- Pie del Lector -->
+      <footer style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+        <span style="font-size:0.875rem; color:var(--color-muted);" id="reader-status-text">
+          Has leído la muestra autorizada.
+        </span>
+        <div style="display:flex; gap:0.75rem;">
+          <a id="reader-buy-btn" href="book.html?id=book-001" class="btn btn-primary" style="padding:0.6rem 1.25rem;">
+            Comprar libro completo
+          </a>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script type="module" src="assets/js/pages/reader.js"></script>
+</body>
+</html>

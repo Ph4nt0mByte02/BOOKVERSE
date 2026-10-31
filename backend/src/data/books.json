@@ -1,0 +1,180 @@
+[
+  {
+    "id": "book-8971",
+    "title": "Until Love Sets Us Apart",
+    "author": "Aditya Nighhot",
+    "editorial": "BOOKVERSE Editorial",
+    "isbn": "978-1284911268",
+    "description": "Nice book",
+    "genre": "fiction",
+    "genreLabel": "Ficción",
+    "formats": [
+      "physical",
+      "ebook"
+    ],
+    "price": {
+      "COP": 32000,
+      "USD": 8
+    },
+    "priceCOP": 32000,
+    "priceUSD": 8,
+    "stock": 18,
+    "cover": "assets/images/books/love.png",
+    "rating": 5,
+    "featured": true,
+    "publishedYear": 2026,
+    "sampleContent": "Fragmento de lectura disponible para Until Love Sets Us Apart. Esta obra explora perspectivas memorables para los lectores."
+  },
+  {
+    "id": "book-6835",
+    "title": "Rayuela",
+    "author": "Julio Cortázar",
+    "editorial": "BOOKVERSE Editorial",
+    "isbn": "978-0000000000",
+    "description": "Obra incorporada recientemente a nuestro catálogo general.",
+    "genre": "fiction",
+    "genreLabel": "Ficción",
+    "formats": [
+      "physical",
+      "ebook"
+    ],
+    "price": {
+      "COP": 48000,
+      "USD": 12
+    },
+    "priceCOP": 48000,
+    "priceUSD": 12,
+    "stock": 15,
+    "cover": "assets/images/books/cien-anos-de-soledad.jpg",
+    "rating": 5,
+    "featured": true,
+    "publishedYear": 2026,
+    "sampleContent": "Fragmento de lectura disponible para Rayuela. Esta obra explora perspectivas memorables para los lectores."
+  },
+  {
+    "id": "book-001",
+    "title": "Cien Años de Soledad",
+    "author": "Gabriel García Márquez",
+    "editorial": "Editorial Sudamericana",
+    "isbn": "978-0307474728",
+    "description": "La obra cumbre del realismo mágico narrando la familia Buendía en Macondo.",
+    "genre": "fiction",
+    "genreLabel": "Ficción",
+    "formats": [
+      "physical",
+      "ebook"
+    ],
+    "priceCOP": 65000,
+    "priceUSD": 16.5,
+    "stock": 14,
+    "cover": "assets/images/books/cien-anos-de-soledad.jpg",
+    "rating": 4.9,
+    "featured": true,
+    "publishedYear": 1967
+  },
+  {
+    "id": "book-002",
+    "title": "Hábitos Atómicos",
+    "author": "James Clear",
+    "editorial": "Paidós Empresa",
+    "isbn": "978-6077477037",
+    "description": "Un método comprobado para desarrollar buenos hábitos.",
+    "genre": "self-help",
+    "genreLabel": "Desarrollo Personal",
+    "formats": [
+      "physical",
+      "ebook"
+    ],
+    "priceCOP": 58000,
+    "priceUSD": 14.99,
+    "stock": 22,
+    "cover": "assets/images/books/habitos-atomicos.jpg",
+    "rating": 4.8,
+    "featured": true,
+    "publishedYear": 2018
+  },
+  {
+    "id": "book-003",
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "editorial": "Anaya Multimedia",
+    "isbn": "978-0132350884",
+    "description": "Manual de estilo para desarrollo ágil.",
+    "genre": "technology",
+    "genreLabel": "Tecnología",
+    "formats": [
+      "physical",
+      "ebook"
+    ],
+    "priceCOP": 110000,
+    "priceUSD": 28,
+    "stock": 7,
+    "cover": "assets/images/books/clean-code.jpg",
+    "rating": 4.7,
+    "featured": true,
+    "publishedYear": 2008
+  },
+  {
+    "id": "book-004",
+    "title": "La Psicología del Dinero",
+    "author": "Morgan Housel",
+    "editorial": "Deusto",
+    "isbn": "978-8423432721",
+    "description": "19 lecciones sobre la riqueza y felicidad.",
+    "genre": "business",
+    "genreLabel": "Economía y Negocios",
+    "formats": [
+      "physical",
+      "ebook"
+    ],
+    "priceCOP": 62000,
+    "priceUSD": 15.5,
+    "stock": 18,
+    "cover": "assets/images/books/la-psicologia-del-dinero.jpg",
+    "rating": 4.8,
+    "featured": true,
+    "publishedYear": 2020
+  },
+  {
+    "id": "book-005",
+    "title": "Meditaciones",
+    "author": "Marco Aurelio",
+    "editorial": "Gredos Clásicos",
+    "isbn": "978-8424937225",
+    "description": "Reflexiones estoicas sobre la serenidad mental.",
+    "genre": "philosophy",
+    "genreLabel": "Filosofía Clásica",
+    "formats": [
+      "physical",
+      "ebook"
+    ],
+    "priceCOP": 49000,
+    "priceUSD": 12,
+    "stock": 15,
+    "cover": "assets/images/books/meditaciones.jpg",
+    "rating": 4.9,
+    "featured": true,
+    "publishedYear": 180
+  },
+  {
+    "id": "book-007",
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "editorial": "Nova",
+    "isbn": "978-8417347987",
+    "description": "La epopeya de ciencia ficción en el planeta Arrakis.",
+    "genre": "sci-fi",
+    "genreLabel": "Ciencia Ficción",
+    "formats": [
+      "physical",
+      "ebook"
+    ],
+    "priceCOP": 79000,
+    "priceUSD": 19.9,
+    "stock": 9,
+    "cover": "assets/images/books/dune.jpg",
+    "rating": 4.9,
+    "featured": true,
+    "publishedYear": 1965
+  }
+]

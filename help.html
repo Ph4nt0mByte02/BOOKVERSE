@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centro de Ayuda y Preguntas Frecuentes — BOOKVERSE</title>
+  <meta name="description" content="Encuentra respuestas sobre compras, formatos físicos y digitales, envíos, recogida en tienda y políticas de devolución en BOOKVERSE." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar" role="region">
+    <span data-i18n="announcement">Envíos gratis en pedidos superiores a $120.000 COP • Lectura digital inmediata</span>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="logo">📖 BOOKVERSE</a>
+
+      <nav class="nav-main" role="navigation">
+        <a href="index.html" data-i18n="home">Inicio</a>
+        <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+        <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+        <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        <a href="discover.html" data-i18n="discover">Descubrir</a>
+        <a href="stores.html" data-i18n="stores">Tiendas</a>
+        <a href="reader.html" data-i18n="readSample">Lector</a>
+        <a href="/consola" style="color:var(--color-terracotta); font-weight:600;" data-i18n="adminConsole">Consola Admin</a>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box search-form" id="global-search-form" role="search">
+          <span class="search-icon">🔍</span>
+          <input type="search" class="search-input" name="q" placeholder="Buscar libros, autores..." data-i18n-placeholder="searchPlaceholder" />
+        </form>
+
+        <select class="lang-select" aria-label="Idioma" id="lang-selector">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+          <option value="hi">HI</option>
+          <option value="pt">PT</option>
+        </select>
+
+        <a href="favorites.html" class="header-icon-btn" aria-label="Favoritos">♥ <span class="badge wishlist-badge" style="display:none;">0</span></a>
+        <a href="cart.html" class="header-icon-btn" aria-label="Carrito">🛒 <span class="badge cart-badge" style="display:none;">0</span></a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container" style="padding-block: 2.5rem; max-width:880px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Migas de pan" style="font-size:0.875rem; color:var(--color-muted); margin-bottom:1.5rem;">
+      <a href="index.html" style="color:var(--color-muted); text-decoration:none;">Inicio</a> / 
+      <span style="color:var(--color-ink); font-weight:500;">Ayuda y Preguntas Frecuentes</span>
+    </nav>
+
+    <div class="section-header" style="text-align:left; margin-bottom:2.5rem;">
+      <h1 style="font-family:var(--font-editorial); font-size:2.5rem;">Preguntas Frecuentes</h1>
+      <p style="color:var(--color-muted); font-size:1.125rem;">Resolvemos tus dudas sobre cómo funciona BOOKVERSE, nuestros formatos y envíos.</p>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:1.75rem;">
+      
+      <!-- FAQ Item 1 -->
+      <details style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; padding:1.25rem;" open>
+        <summary style="font-family:var(--font-editorial); font-size:1.25rem; font-weight:600; cursor:pointer; color:var(--color-forest);">
+          ¿Cómo accedo a mis libros electrónicos (ebooks) después de la compra?
+        </summary>
+        <p style="margin-top:0.75rem; line-height:1.7; color:var(--color-ink);">
+          El acceso a los libros electrónicos es inmediato. Una vez completado tu pedido, el libro se vincula a tu biblioteca y puedes comenzar a leerlo directamente en tu navegador usando nuestro <a href="reader.html" style="color:var(--color-forest); font-weight:600;">Lector Web BOOKVERSE</a> desde cualquier computadora, tableta o teléfono celular sin necesidad de instalar aplicaciones pesadas.
+        </p>
+      </details>
+
+      <!-- FAQ Item 2 -->
+      <details style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; padding:1.25rem;" id="formats">
+        <summary style="font-family:var(--font-editorial); font-size:1.25rem; font-weight:600; cursor:pointer; color:var(--color-forest);">
+          ¿Qué diferencia hay entre el formato físico y el formato electrónico?
+        </summary>
+        <p style="margin-top:0.75rem; line-height:1.7; color:var(--color-ink);">
+          El formato físico corresponde al ejemplar impreso encuadernado en tapa blanda o dura, enviado a tu domicilio con empaque seguro y marcalibros exclusivo. El formato electrónico (ebook) es una versión digital ligera que no ocupa espacio físico, tiene un precio especial y permite ajustar el tamaño de fuente y el modo de lectura (claro, sepia o nocturno).
+        </p>
+      </details>
+
+      <!-- FAQ Item 3 -->
+      <details style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; padding:1.25rem;" id="shipping">
+        <summary style="font-family:var(--font-editorial); font-size:1.25rem; font-weight:600; cursor:pointer; color:var(--color-forest);">
+          ¿Cuáles son los tiempos y costos de envío para libros impresos?
+        </summary>
+        <p style="margin-top:0.75rem; line-height:1.7; color:var(--color-ink);">
+          Los pedidos con valor superior a $120.000 COP cuentan con envío estándar gratuito a nivel nacional. Las entregas en ciudades principales (Bogotá, Medellín, Cali) tardan habitualmente entre 24 y 48 horas hábiles. También puedes optar por recogida sin costo en cualquiera de nuestras sucursales con el servicio Click & Collect.
+        </p>
+      </details>
+
+      <!-- FAQ Item 4 -->
+      <details style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; padding:1.25rem;">
+        <summary style="font-family:var(--font-editorial); font-size:1.25rem; font-weight:600; cursor:pointer; color:var(--color-forest);">
+          ¿Cómo funciona el servicio Click & Collect en sucursales físicas?
+        </summary>
+        <p style="margin-top:0.75rem; line-height:1.7; color:var(--color-ink);">
+          Al momento de confirmar tu pedido en el carrito, selecciona tu sucursal más cercana. Prepararemos tu ejemplar en un plazo de 2 a 4 horas y recibirás una notificación para recogerlo en el mostrador editorial de la librería.
+        </p>
+      </details>
+
+      <!-- FAQ Item 5 -->
+      <details style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; padding:1.25rem;" id="privacy">
+        <summary style="font-family:var(--font-editorial); font-size:1.25rem; font-weight:600; cursor:pointer; color:var(--color-forest);">
+          ¿Qué datos almacena este sitio web? (Aviso del prototipo)
+        </summary>
+        <p style="margin-top:0.75rem; line-height:1.7; color:var(--color-ink);">
+          BOOKVERSE almacena exclusivamente tus preferencias de idioma, moneda, temas visuales y tu lista local de favoritos y carrito en el almacenamiento de tu navegador (localStorage). No solicitamos tarjetas bancarias reales ni compartimos tu información con terceros.
+        </p>
+      </details>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>📖 BOOKVERSE</h3>
+          <p data-i18n="footerAbout">Librería editorial que une la experiencia física y digital en un solo lugar.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerNavTitle">Navegación</h4>
+          <a href="index.html" data-i18n="home">Inicio</a>
+          <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+          <a href="discover.html" data-i18n="discover">Descubrir</a>
+          <a href="stores.html" data-i18n="stores">Tiendas físicas</a>
+          <a href="reader.html" data-i18n="readSample">Lector web</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerFormatsTitle">Formatos</h4>
+          <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+          <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerHelpTitle">Ayuda</h4>
+          <a href="help.html">Preguntas frecuentes</a>
+          <a href="/consola" style="color:var(--color-gold);">Consola Admin</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footerRights">© 2026 BOOKVERSE. Todos los derechos reservados. Proyecto demostrativo.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

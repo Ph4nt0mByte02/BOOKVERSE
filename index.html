@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Primary Meta Tags -->
+  <title>BOOKVERSE — Librería Editorial Física y Digital | Tu próxima historia está esperando</title>
+  <meta name="title" content="BOOKVERSE — Librería Editorial Física y Digital" />
+  <meta name="description" content="BOOKVERSE une la calidez de la librería física con la inmediatez de la lectura digital. Catálogo de novedades, libros físicos, ebooks, colecciones editoriales y lector en el navegador." />
+  <meta name="keywords" content="librería, libros físicos, ebooks, literatura, comprar libros, lectura digital, novelas, ensayo, ciencia ficción, desarrollo personal" />
+  <meta name="author" content="BOOKVERSE Editorial" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://bookverse.example.com/" />
+
+  <!-- GEO Meta Tags (Geographic SEO) -->
+  <meta name="geo.region" content="CO-DC" />
+  <meta name="geo.placename" content="Bogotá, Colombia" />
+  <meta name="geo.position" content="4.653333;-74.062778" />
+  <meta name="ICBM" content="4.653333, -74.062778" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bookverse.example.com/" />
+  <meta property="og:site_name" content="BOOKVERSE" />
+  <meta property="og:title" content="BOOKVERSE — Librería Editorial Física y Digital" />
+  <meta property="og:description" content="Descubre libros que despiertan ideas, acompañan momentos y abren nuevas perspectivas. Catálogo curado, envíos y lectura digital." />
+  <meta property="og:image" content="assets/images/books/cien-anos-de-soledad.jpg" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="pt_BR" />
+  <meta property="og:locale:alternate" content="hi_IN" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BOOKVERSE — Librería Editorial Física y Digital" />
+  <meta name="twitter:description" content="Tu próxima historia está esperando. Libros físicos y digitales en un solo lugar con atención de libreros." />
+  <meta name="twitter:image" content="assets/images/books/cien-anos-de-soledad.jpg" />
+
+  <!-- AEO / Structured Data JSON-LD (Search & AI Engine Optimization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BookStore",
+        "@id": "https://bookverse.example.com/#store",
+        "name": "BOOKVERSE Librería Editorial",
+        "description": "Librería independiente con catálogo curado de libros físicos y electrónicos, espacios de café y clubes de lectura.",
+        "url": "https://bookverse.example.com/",
+        "priceRange": "$$",
+        "currenciesAccepted": "COP, USD, EUR",
+        "paymentAccepted": "Cash, Credit Card, Debit Card",
+        "telephone": "+57 601 345 6789",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Calle 70 # 9-45, Chapinero",
+          "addressLocality": "Bogotá",
+          "addressRegion": "Cundinamarca",
+          "postalCode": "110221",
+          "addressCountry": "CO"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 4.653333,
+          "longitude": -74.062778
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Sunday"],
+            "opens": "10:00",
+            "closes": "18:00"
+          }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://bookverse.example.com/#website",
+        "url": "https://bookverse.example.com/",
+        "name": "BOOKVERSE",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://bookverse.example.com/catalog.html?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets (Linked via link tags, NO @import) -->
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="assets/css/pages/home.css" />
+</head>
+<body>
+
+  <!-- ====== Announcement Bar ====== -->
+  <aside class="announcement-bar" role="region" aria-label="Anuncios de la tienda">
+    <span data-i18n="announcement">Envíos gratis en pedidos superiores a $120.000 COP • Lectura digital inmediata</span>
+    — <a href="catalog.html" data-i18n="exploreCatalog">Explora el catálogo</a>
+  </aside>
+
+  <!-- ====== Header ====== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="BOOKVERSE Inicio">📖 BOOKVERSE</a>
+
+      <nav class="nav-main" role="navigation" aria-label="Navegación principal">
+        <a href="index.html" class="is-active" data-i18n="home">Inicio</a>
+        <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+        <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+        <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        <a href="discover.html" data-i18n="discover">Descubrir</a>
+        <a href="stores.html" data-i18n="stores">Tiendas</a>
+        <a href="reader.html" data-i18n="readSample">Lector</a>
+        <!-- Admin link hidden from public nav — access via /consola directly -->
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box search-form" id="global-search-form" role="search">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="search" class="search-input" name="q" placeholder="Buscar libros, autores..." data-i18n-placeholder="searchPlaceholder" aria-label="Buscar en el catálogo" />
+        </form>
+
+        <select class="lang-select" aria-label="Seleccionar idioma" id="lang-selector">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+          <option value="hi">HI</option>
+          <option value="pt">PT</option>
+        </select>
+
+        <a href="favorites.html" class="header-icon-btn" aria-label="Favoritos" title="Ver mis favoritos">
+          ♥
+          <span class="badge wishlist-badge" style="display:none;">0</span>
+        </a>
+
+        <a href="cart.html" class="header-icon-btn" aria-label="Carrito de compras" title="Ver carrito">
+          🛒
+          <span class="badge cart-badge" style="display:none;">0</span>
+        </a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Abrir menú" style="display:none; background:none; border:none; font-size:1.5rem; cursor:pointer;">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ====== Hero Editorial ====== -->
+    <section class="hero page-container" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          ✨ <span>Editorial 2026</span> — Colección destacada de autores clásicos y contemporáneos
+        </div>
+        <h1 id="hero-title" data-i18n="heroTitle">Tu próxima historia está esperando.</h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">
+          Descubre libros que despiertan ideas, acompañan momentos y abren nuevas perspectivas. Físicos y digitales, en un solo lugar con atención de libreros.
+        </p>
+        <div class="hero-actions">
+          <a href="catalog.html" class="btn btn-primary" data-i18n="exploreCatalog">Explorar catálogo</a>
+          <a href="catalog.html?format=ebook" class="btn btn-secondary" data-i18n="discoverEbooks">Descubrir e‑books</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-decoration"></div>
+        <div class="hero-books">
+          <img class="hero-book" src="assets/images/books/cien-anos-de-soledad.jpg" alt="Portada Cien Años de Soledad" />
+          <img class="hero-book" src="assets/images/books/dune.jpg" alt="Portada Dune" />
+          <img class="hero-book" src="assets/images/books/habitos-atomicos.jpg" alt="Portada Hábitos Atómicos" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Stats ====== -->
+    <section class="stats-bar page-container" aria-label="Cifras de BOOKVERSE">
+      <div class="stat-item">
+        <span class="stat-number">12,500+</span>
+        <span class="stat-label" data-i18n="statsBooks">Títulos disponibles</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">850+</span>
+        <span class="stat-label">Autores iberoamericanos y mundiales</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">4,200+</span>
+        <span class="stat-label" data-i18n="formatDigitalTitle">E‑books de acceso inmediato</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label" data-i18n="statsStores">Librerías físicas con café</span>
+      </div>
+    </section>
+
+    <!-- ====== Formatos ====== -->
+    <section class="formats-section page-container" aria-labelledby="formats-title">
+      <div class="section-header">
+        <h2 id="formats-title">Dos formas de vivir la lectura</h2>
+        <p>Elige entre la calidez táctil del libro impreso y la versatilidad de la lectura digital.</p>
+      </div>
+      <div class="formats-grid">
+        <article class="format-card">
+          <div class="format-card-icon" aria-hidden="true">📕</div>
+          <h3 data-i18n="formatPhysicalTitle">Libros físicos</h3>
+          <p data-i18n="formatPhysicalDesc">Portadas que se tocan, páginas que se sienten y olor a imprenta. Recibe en tu casa con empaque ecológico o recoge en sucursal.</p>
+          <a href="catalog.html?format=physical" class="btn btn-primary" data-i18n="exploreCatalog">Ver libros físicos</a>
+        </article>
+        <article class="format-card">
+          <div class="format-card-icon" aria-hidden="true">📱</div>
+          <h3 data-i18n="formatDigitalTitle">Libros electrónicos</h3>
+          <p data-i18n="formatDigitalDesc">Lectura inmediata desde cualquier dispositivo con nuestro lector web integrado. Ajuste de tipografía, interlineado y temas sepia o nocturno.</p>
+          <a href="catalog.html?format=ebook" class="btn btn-secondary" data-i18n="discoverEbooks">Ver e‑books</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== Categorías Destacadas ====== -->
+    <section class="categories-section page-container" aria-labelledby="cat-title">
+      <div class="section-header">
+        <h2 id="cat-title" data-i18n="featuredCategories">Categorías Destacadas</h2>
+        <p>Encuentra historias y conocimientos que conecten con tus pasiones.</p>
+      </div>
+      <div class="categories-grid">
+        <a href="catalog.html?genre=fiction" class="category-card">
+          <div class="category-card-icon">📖</div>
+          <div class="category-card-name">Ficción</div>
+          <div class="category-card-count">1,240 títulos</div>
+        </a>
+        <a href="catalog.html?genre=self-help" class="category-card">
+          <div class="category-card-icon">🌱</div>
+          <div class="category-card-name">Desarrollo personal</div>
+          <div class="category-card-count">430 títulos</div>
+        </a>
+        <a href="catalog.html?genre=technology" class="category-card">
+          <div class="category-card-icon">💻</div>
+          <div class="category-card-name">Tecnología</div>
+          <div class="category-card-count">320 títulos</div>
+        </a>
+        <a href="catalog.html?genre=business" class="category-card">
+          <div class="category-card-icon">📈</div>
+          <div class="category-card-name">Economía y Finanzas</div>
+          <div class="category-card-count">510 títulos</div>
+        </a>
+        <a href="catalog.html?genre=philosophy" class="category-card">
+          <div class="category-card-icon">🏛️</div>
+          <div class="category-card-name">Filosofía Clásica</div>
+          <div class="category-card-count">670 títulos</div>
+        </a>
+        <a href="catalog.html?genre=sci-fi" class="category-card">
+          <div class="category-card-icon">🪐</div>
+          <div class="category-card-name">Ciencia ficción</div>
+          <div class="category-card-count">480 títulos</div>
+        </a>
+        <a href="catalog.html?genre=history" class="category-card">
+          <div class="category-card-icon">📜</div>
+          <div class="category-card-name">Historia</div>
+          <div class="category-card-count">560 títulos</div>
+        </a>
+        <a href="catalog.html?genre=romance" class="category-card">
+          <div class="category-card-icon">🌹</div>
+          <div class="category-card-name">Romance y Clásicos</div>
+          <div class="category-card-count">890 títulos</div>
+        </a>
+        <a href="catalog.html?genre=children" class="category-card">
+          <div class="category-card-icon">🎈</div>
+          <div class="category-card-name">Infantil y juvenil</div>
+          <div class="category-card-count">540 títulos</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====== Novedades Editoriales ====== -->
+    <section class="books-section page-container" aria-labelledby="new-releases-title">
+      <div class="books-section-header">
+        <div>
+          <h2 id="new-releases-title" data-i18n="newReleases">Novedades Editoriales</h2>
+          <p data-i18n="newReleasesSubtitle">Los títulos más recientes que han llegado a nuestras estanterías.</p>
+        </div>
+        <a href="catalog.html" class="btn btn-ghost" data-i18n="viewAllCategories">Ver todo el catálogo →</a>
+      </div>
+      <div class="scroll-row" id="home-novedades-row">
+
+        <!-- Libro 1 -->
+        <article class="book-card" data-book-id="book-001">
+          <div class="book-card-cover">
+            <a href="book.html?id=book-001">
+              <img src="assets/images/books/cien-anos-de-soledad.jpg" alt="Portada Cien Años de Soledad" loading="lazy" />
+            </a>
+            <span class="book-card-badge">Clásico</span>
+            <button class="book-card-fav" data-wishlist-id="book-001" aria-label="Guardar en favoritos"><span class="wishlist-icon">♡</span></button>
+          </div>
+          <div class="book-card-body">
+            <h3 class="book-card-title"><a href="book.html?id=book-001">Cien Años de Soledad</a></h3>
+            <div class="book-card-author">Gabriel García Márquez</div>
+            <div class="book-card-meta">
+              <span class="book-card-price">$65.000 COP</span>
+              <span class="book-card-format">Físico + Digital</span>
+            </div>
+            <button class="book-card-btn" data-add-cart="book-001" data-format="physical" data-i18n="addToCart">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <!-- Libro 2 -->
+        <article class="book-card" data-book-id="book-002">
+          <div class="book-card-cover">
+            <a href="book.html?id=book-002">
+              <img src="assets/images/books/habitos-atomicos.jpg" alt="Portada Hábitos Atómicos" loading="lazy" />
+            </a>
+            <span class="book-card-badge">Bestseller</span>
+            <button class="book-card-fav" data-wishlist-id="book-002" aria-label="Guardar en favoritos"><span class="wishlist-icon">♡</span></button>
+          </div>
+          <div class="book-card-body">
+            <h3 class="book-card-title"><a href="book.html?id=book-002">Hábitos Atómicos</a></h3>
+            <div class="book-card-author">James Clear</div>
+            <div class="book-card-meta">
+              <span class="book-card-price">$58.000 COP</span>
+              <span class="book-card-format">Físico + Digital</span>
+            </div>
+            <button class="book-card-btn" data-add-cart="book-002" data-format="physical" data-i18n="addToCart">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <!-- Libro 3 -->
+        <article class="book-card" data-book-id="book-007">
+          <div class="book-card-cover">
+            <a href="book.html?id=book-007">
+              <img src="assets/images/books/dune.jpg" alt="Portada Dune" loading="lazy" />
+            </a>
+            <span class="book-card-badge">Ciencia Ficción</span>
+            <button class="book-card-fav" data-wishlist-id="book-007" aria-label="Guardar en favoritos"><span class="wishlist-icon">♡</span></button>
+          </div>
+          <div class="book-card-body">
+            <h3 class="book-card-title"><a href="book.html?id=book-007">Dune</a></h3>
+            <div class="book-card-author">Frank Herbert</div>
+            <div class="book-card-meta">
+              <span class="book-card-price">$79.000 COP</span>
+              <span class="book-card-format">Físico + Digital</span>
+            </div>
+            <button class="book-card-btn" data-add-cart="book-007" data-format="physical" data-i18n="addToCart">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <!-- Libro 4 -->
+        <article class="book-card" data-book-id="book-004">
+          <div class="book-card-cover">
+            <a href="book.html?id=book-004">
+              <img src="assets/images/books/la-psicologia-del-dinero.jpg" alt="Portada La Psicología del Dinero" loading="lazy" />
+            </a>
+            <button class="book-card-fav" data-wishlist-id="book-004" aria-label="Guardar en favoritos"><span class="wishlist-icon">♡</span></button>
+          </div>
+          <div class="book-card-body">
+            <h3 class="book-card-title"><a href="book.html?id=book-004">La Psicología del Dinero</a></h3>
+            <div class="book-card-author">Morgan Housel</div>
+            <div class="book-card-meta">
+              <span class="book-card-price">$62.000 COP</span>
+              <span class="book-card-format">Físico + Digital</span>
+            </div>
+            <button class="book-card-btn" data-add-cart="book-004" data-format="physical" data-i18n="addToCart">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <!-- Libro 5 -->
+        <article class="book-card" data-book-id="book-005">
+          <div class="book-card-cover">
+            <a href="book.html?id=book-005">
+              <img src="assets/images/books/meditaciones.jpg" alt="Portada Meditaciones" loading="lazy" />
+            </a>
+            <span class="book-card-badge">Filosofía</span>
+            <button class="book-card-fav" data-wishlist-id="book-005" aria-label="Guardar en favoritos"><span class="wishlist-icon">♡</span></button>
+          </div>
+          <div class="book-card-body">
+            <h3 class="book-card-title"><a href="book.html?id=book-005">Meditaciones</a></h3>
+            <div class="book-card-author">Marco Aurelio</div>
+            <div class="book-card-meta">
+              <span class="book-card-price">$49.000 COP</span>
+              <span class="book-card-format">Físico + Digital</span>
+            </div>
+            <button class="book-card-btn" data-add-cart="book-005" data-format="physical" data-i18n="addToCart">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <!-- Libro 6 -->
+        <article class="book-card" data-book-id="book-003">
+          <div class="book-card-cover">
+            <a href="book.html?id=book-003">
+              <img src="assets/images/books/clean-code.jpg" alt="Portada Clean Code" loading="lazy" />
+            </a>
+            <span class="book-card-badge">Tecnología</span>
+            <button class="book-card-fav" data-wishlist-id="book-003" aria-label="Guardar en favoritos"><span class="wishlist-icon">♡</span></button>
+          </div>
+          <div class="book-card-body">
+            <h3 class="book-card-title"><a href="book.html?id=book-003">Clean Code</a></h3>
+            <div class="book-card-author">Robert C. Martin</div>
+            <div class="book-card-meta">
+              <span class="book-card-price">$110.000 COP</span>
+              <span class="book-card-format">Físico + Digital</span>
+            </div>
+            <button class="book-card-btn" data-add-cart="book-003" data-format="physical" data-i18n="addToCart">Añadir al carrito</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ====== Editorial Banner ====== -->
+    <section class="page-container" aria-label="Banner Editorial">
+      <div class="editorial-banner">
+        <div>
+          <h2 data-i18n="librarianPicks">Recomendados por nuestros libreros</h2>
+          <p data-i18n="editorialBannerText">Seleccionamos las historias que más nos han marcado este mes. Obras que merecen un lugar de honor en tu biblioteca.</p>
+          <a href="discover.html" class="btn btn-terracotta" data-i18n="editorialBannerBtn">Ver Selección Editorial</a>
+        </div>
+        <div style="text-align:center; font-size:6rem; opacity:0.3;" aria-hidden="true">📖</div>
+      </div>
+    </section>
+
+    <!-- ====== Tiendas físicas ====== -->
+    <section class="stores-section page-container" aria-labelledby="stores-title">
+      <div class="section-header">
+        <h2 id="stores-title" data-i18n="physicalStoresTitle">Nuestras Librerías Físicas</h2>
+        <p data-i18n="physicalStoresSubtitle">Espacios de encuentro, café de especialidad y tertulias literarias.</p>
+      </div>
+      <div class="stores-grid">
+
+        <article class="store-card">
+          <div class="store-card-img" aria-hidden="true">☕</div>
+          <div class="store-card-body">
+            <h3 class="store-card-name">BOOKVERSE Quinta Camacho</h3>
+            <div class="store-card-detail">📍 Calle 70 # 9-45, Bogotá (Chapinero)</div>
+            <div class="store-card-detail">🕐 Lun–Sáb: 9:00 – 20:00 | Dom: 10:00 – 18:00</div>
+            <div class="store-card-detail">📚 Cafetería de especialidad y Click & Collect</div>
+            <a href="stores.html#store-001" class="btn btn-ghost" style="margin-top:0.75rem; padding-left:0;" data-i18n="viewStores">Ver sucursal y servicios →</a>
+          </div>
+        </article>
+
+        <article class="store-card">
+          <div class="store-card-img" aria-hidden="true">🌿</div>
+          <div class="store-card-body">
+            <h3 class="store-card-name">BOOKVERSE El Poblado</h3>
+            <div class="store-card-detail">📍 Carrera 43A # 5A-113, Medellín</div>
+            <div class="store-card-detail">🕐 Lun–Sáb: 9:30 – 20:30 | Dom: 11:00 – 18:00</div>
+            <div class="store-card-detail">📚 Terraza literaria y novedades editoriales</div>
+            <a href="stores.html#store-002" class="btn btn-ghost" style="margin-top:0.75rem; padding-left:0;" data-i18n="viewStores">Ver sucursal y servicios →</a>
+          </div>
+        </article>
+
+        <article class="store-card">
+          <div class="store-card-img" aria-hidden="true">🍃</div>
+          <div class="store-card-body">
+            <h3 class="store-card-name">BOOKVERSE Ciudad Jardín</h3>
+            <div class="store-card-detail">📍 Avenida San Joaquín # 14-88, Cali</div>
+            <div class="store-card-detail">🕐 Lun–Sáb: 10:00 – 20:00 | Dom: 11:00 – 17:00</div>
+            <div class="store-card-detail">📚 Jardín de lectura y talleres de escritura</div>
+            <a href="stores.html#store-003" class="btn btn-ghost" style="margin-top:0.75rem; padding-left:0;" data-i18n="viewStores">Ver sucursal y servicios →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ====== Newsletter Club de Lectura ====== -->
+    <section class="newsletter-section page-container" aria-labelledby="newsletter-title">
+      <h2 id="newsletter-title" data-i18n="newsletterTitle">Únete al Club de Lectura BOOKVERSE</h2>
+      <p style="margin-inline:auto;" data-i18n="newsletterSubtitle">Recibe recomendaciones semanales de nuestros libreros y un 10% de descuento en tu primera compra. Sin spam, solo literatura.</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); import('./assets/js/ui/toast.js').then(m => m.showToast('¡Bienvenido al Club de Lectura BOOKVERSE!'));">
+        <input type="email" placeholder="Tu correo electrónico" aria-label="Correo electrónico" required />
+        <button type="submit" class="btn btn-primary" data-i18n="subscribe">Suscribirme</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>📖 BOOKVERSE</h3>
+          <p data-i18n="footerAbout">Una librería independiente que celebra la literatura impresa y la lectura digital con una experiencia cálida, acogedora y contemporánea.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerNavTitle">Navegación</h4>
+          <a href="index.html" data-i18n="home">Inicio</a>
+          <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+          <a href="discover.html" data-i18n="discover">Descubrir</a>
+          <a href="stores.html" data-i18n="stores">Tiendas físicas</a>
+          <a href="reader.html" data-i18n="readSample">Lector web</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerFormatsTitle">Formatos</h4>
+          <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+          <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+          <a href="help.html#formats">Compatibilidad digital</a>
+          <a href="stores.html">Recogida Click & Collect</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerHelpTitle">Ayuda y Soporte</h4>
+          <a href="help.html">Preguntas frecuentes</a>
+          <a href="help.html#shipping">Envíos y entregas</a>
+          <!-- Admin console link removed from public footer -->
+          <a href="help.html#privacy">Aviso de privacidad</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footerRights">© 2026 BOOKVERSE. Todos los derechos reservados. Proyecto demostrativo omnicanal.</span>
+        <span>Hecho con devoción por las buenas historias</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Coordination Module -->
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

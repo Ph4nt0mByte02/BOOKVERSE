@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo Completo — BOOKVERSE | Libros Físicos y Digitales</title>
+  <meta name="description" content="Explora nuestro catálogo completo de libros de ficción, desarrollo personal, tecnología, filosofía y clásicos. Filtra por formato físico o digital." />
+  <link rel="canonical" href="https://bookverse.example.com/catalog.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Catálogo Completo — BOOKVERSE" />
+  <meta property="og:description" content="Encuentra tu próxima lectura entre miles de títulos físicos y digitales curados por libreros." />
+  <meta property="og:image" content="assets/images/books/cien-anos-de-soledad.jpg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="assets/css/pages/catalog.css" />
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar" role="region">
+    <span data-i18n="announcement">Envíos gratis en pedidos superiores a $120.000 COP • Lectura digital inmediata</span>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="logo">📖 BOOKVERSE</a>
+
+      <nav class="nav-main" role="navigation">
+        <a href="index.html" data-i18n="home">Inicio</a>
+        <a href="catalog.html" class="is-active" data-i18n="catalog">Catálogo</a>
+        <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+        <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+        <a href="discover.html" data-i18n="discover">Descubrir</a>
+        <a href="stores.html" data-i18n="stores">Tiendas</a>
+        <a href="reader.html" data-i18n="readSample">Lector</a>
+        <a href="/consola" style="color:var(--color-terracotta); font-weight:600;" data-i18n="adminConsole">Consola Admin</a>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box search-form" id="global-search-form" role="search">
+          <span class="search-icon">🔍</span>
+          <input type="search" class="search-input" id="catalog-search-input" name="q" placeholder="Buscar libros, autores..." data-i18n-placeholder="searchPlaceholder" />
+        </form>
+
+        <select class="lang-select" aria-label="Idioma" id="lang-selector">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+          <option value="hi">HI</option>
+          <option value="pt">PT</option>
+        </select>
+
+        <a href="favorites.html" class="header-icon-btn" aria-label="Favoritos">♥ <span class="badge wishlist-badge" style="display:none;">0</span></a>
+        <a href="cart.html" class="header-icon-btn" aria-label="Carrito">🛒 <span class="badge cart-badge" style="display:none;">0</span></a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container" style="padding-block: 2rem;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Migas de pan" style="font-size:0.875rem; color:var(--color-muted); margin-bottom:1.5rem;">
+      <a href="index.html" style="color:var(--color-muted); text-decoration:none;">Inicio</a> / 
+      <span style="color:var(--color-ink); font-weight:500;">Catálogo de Libros</span>
+    </nav>
+
+    <div class="section-header" style="text-align:left; margin-bottom:1.5rem;">
+      <h1 style="font-family:var(--font-editorial); font-size:2.25rem;">Catálogo Editorial</h1>
+      <p style="color:var(--color-muted);">Explora todos nuestros títulos físicos y libros electrónicos cuidadosamente curados.</p>
+    </div>
+
+    <div class="catalog-layout">
+      <!-- Filtros Laterales -->
+      <aside class="catalog-sidebar" aria-label="Filtros del catálogo">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+          <h2 style="font-size:1.125rem; font-family:var(--font-editorial); margin:0;">Filtros</h2>
+          <button id="clear-filters-btn" class="btn btn-ghost" style="padding:0.25rem 0.5rem; font-size:0.8125rem;" data-i18n="clearFilters">Limpiar</button>
+        </div>
+
+        <!-- Formato -->
+        <div class="filter-group">
+          <div class="filter-title" data-i18n="filterByFormat">Formato de lectura</div>
+          <div class="filter-options">
+            <label class="filter-label">
+              <input type="radio" name="format-filter" value="all" checked />
+              <span>Todos los formatos</span>
+            </label>
+            <label class="filter-label">
+              <input type="radio" name="format-filter" value="physical" />
+              <span>Libros Físicos (Impresos)</span>
+            </label>
+            <label class="filter-label">
+              <input type="radio" name="format-filter" value="ebook" />
+              <span>Ebooks Digitales</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Géneros -->
+        <div class="filter-group">
+          <div class="filter-title" data-i18n="filterByGenre">Géneros y Temáticas</div>
+          <div class="filter-options" id="genre-filters-container">
+            <label class="filter-label"><input type="checkbox" name="genre" value="fiction" /> Ficción</label>
+            <label class="filter-label"><input type="checkbox" name="genre" value="self-help" /> Desarrollo Personal</label>
+            <label class="filter-label"><input type="checkbox" name="genre" value="technology" /> Tecnología</label>
+            <label class="filter-label"><input type="checkbox" name="genre" value="business" /> Economía y Finanzas</label>
+            <label class="filter-label"><input type="checkbox" name="genre" value="philosophy" /> Filosofía Clásica</label>
+            <label class="filter-label"><input type="checkbox" name="genre" value="sci-fi" /> Ciencia Ficción</label>
+            <label class="filter-label"><input type="checkbox" name="genre" value="history" /> Historia</label>
+            <label class="filter-label"><input type="checkbox" name="genre" value="romance" /> Romance y Clásicos</label>
+            <label class="filter-label"><input type="checkbox" name="genre" value="children" /> Infantil y Juvenil</label>
+          </div>
+        </div>
+
+        <!-- Disponibilidad -->
+        <div class="filter-group">
+          <div class="filter-title">Disponibilidad</div>
+          <div class="filter-options">
+            <label class="filter-label">
+              <input type="checkbox" id="stock-filter" value="instock" />
+              <span>Solo disponibles en stock</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Contenido Principal del Catálogo -->
+      <section aria-label="Resultados de libros">
+        <div class="catalog-header">
+          <div class="catalog-count" id="catalog-count-text">
+            Mostrando <strong id="visible-books-count">12</strong> libros
+          </div>
+
+          <div class="catalog-sort">
+            <label for="catalog-sort-select" data-i18n="sortBy">Ordenar por:</label>
+            <select id="catalog-sort-select">
+              <option value="featured" data-i18n="sortRelevance">Relevancia / Destacados</option>
+              <option value="price-asc" data-i18n="sortPriceAsc">Precio: menor a mayor</option>
+              <option value="price-desc" data-i18n="sortPriceDesc">Precio: mayor a menor</option>
+              <option value="title-az" data-i18n="sortTitleAZ">Título: A - Z</option>
+              <option value="rating" data-i18n="sortRating">Mejor valorados</option>
+              <option value="year" data-i18n="sortNewest">Año de publicación</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Grid de Libros -->
+        <div class="catalog-grid" id="catalog-books-grid">
+          <!-- Static / JS populated items -->
+        </div>
+
+        <!-- Estado Vacío -->
+        <div class="catalog-empty" id="catalog-empty-state" style="display:none;">
+          <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
+          <h3>No encontramos coincidencias</h3>
+          <p style="color:var(--color-muted); max-width:400px; margin:0 auto 1.5rem;">Prueba modificando tus términos de búsqueda o eliminando algunos filtros aplicados.</p>
+          <button id="reset-catalog-btn" class="btn btn-primary" data-i18n="clearFilters">Restablecer filtros</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>📖 BOOKVERSE</h3>
+          <p data-i18n="footerAbout">Librería editorial que une la experiencia física y digital en un solo lugar.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerNavTitle">Navegación</h4>
+          <a href="index.html" data-i18n="home">Inicio</a>
+          <a href="catalog.html" data-i18n="catalog">Catálogo</a>
+          <a href="discover.html" data-i18n="discover">Descubrir</a>
+          <a href="stores.html" data-i18n="stores">Tiendas físicas</a>
+          <a href="reader.html" data-i18n="readSample">Lector web</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerFormatsTitle">Formatos</h4>
+          <a href="catalog.html?format=physical" data-i18n="physicalBooks">Libros físicos</a>
+          <a href="catalog.html?format=ebook" data-i18n="ebooks">E‑books</a>
+          <a href="help.html#formats">Compatibilidad digital</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerHelpTitle">Ayuda</h4>
+          <a href="help.html">Preguntas frecuentes</a>
+          <a href="/consola" style="color:var(--color-gold);">Consola Admin</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footerRights">© 2026 BOOKVERSE. Todos los derechos reservados. Proyecto demostrativo.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/pages/catalog.js"></script>
+</body>
+</html>
