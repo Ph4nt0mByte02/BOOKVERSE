@@ -39,6 +39,46 @@
       overflow-x: hidden;
     }
 
+    .auth-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      background: radial-gradient(circle at top, #315c4d, var(--bg-dark) 60%);
+    }
+
+    .auth-card {
+      width: min(100%, 430px);
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    .auth-card h1 {
+      font-family: var(--font-editorial);
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .auth-card p { color: var(--color-muted); margin-bottom: 1.5rem; }
+    .auth-card label { display: block; margin: 0.9rem 0 0.35rem; font-size: 0.85rem; }
+    .auth-card input {
+      width: 100%;
+      padding: 0.8rem;
+      color: var(--color-text);
+      background: var(--bg-input);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+    }
+    .auth-error { color: #ff9a8b; min-height: 1.3rem; margin-top: 0.75rem; font-size: 0.85rem; }
+    body.authenticated .auth-gate { display: none; }
+    body:not(.authenticated) .admin-sidebar,
+    body:not(.authenticated) .admin-main { visibility: hidden; }
+
     /* Left Sidebar Menu */
     .admin-sidebar {
       width: 270px;
@@ -338,6 +378,18 @@
   </style>
 </head>
 <body>
+  <section class="auth-gate" id="auth-gate" aria-label="Acceso de administración">
+    <form class="auth-card" id="admin-login-form">
+      <h1>BOOKVERSE</h1>
+      <p>Acceso seguro a la consola editorial.</p>
+      <label for="admin-email">Correo electrónico</label>
+      <input id="admin-email" name="email" type="email" autocomplete="username" required />
+      <label for="admin-password">Contraseña</label>
+      <input id="admin-password" name="password" type="password" autocomplete="current-password" required />
+      <div class="auth-error" id="admin-login-error" role="alert"></div>
+      <button class="btn btn-primary" type="submit" style="width:100%; margin-top:0.75rem;">Entrar a la consola</button>
+    </form>
+  </section>
 
   <!-- Left Sidebar Menu -->
   <aside class="admin-sidebar" aria-label="Menú de administración">
@@ -393,8 +445,9 @@
     </ul>
 
     <div class="sidebar-footer">
-      <div style="font-weight:600; color:var(--color-gold);">Admin Activo</div>
-      <div style="color:var(--color-muted); font-size:0.75rem;">admin@bookverse.com</div>
+      <div style="font-weight:600; color:var(--color-gold);" id="admin-session-label">Admin Activo</div>
+      <div style="color:var(--color-muted); font-size:0.75rem;" id="admin-session-email"></div>
+      <button type="button" id="admin-logout" class="btn btn-ghost" style="margin-top:0.75rem; padding:0; color:var(--color-muted);">Cerrar sesión</button>
     </div>
   </aside>
 
@@ -650,6 +703,8 @@
 
   <script type="module">
     import { getAllBooks, saveBookToCatalog, removeBookFromCatalog, syncCatalogWithApi } from "./assets/js/data/books.js";
+    import { supabase, authHeaders } from "./assets/js/supabase.js";
+    import { apiUrl } from "./assets/js/api.js";
 
     let currentBooks = [];
 
@@ -667,21 +722,62 @@
         }
       } catch (e) {}
 
-      // 3. Autenticación automática de fondo para asegurar tokens de sesión
-      try {
-        const authRes = await fetch("/api/auth/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: "admin@bookverse.com", password: "AdminBookverse2026!" })
-        });
-        if (authRes.ok) {
-          const authData = await authRes.json();
-          if (authData.token) {
-            localStorage.setItem("bookverse_admin_token", authData.token);
-          }
-        }
-      } catch (e) {}
     }
+
+    async function authenticateAdmin() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return false;
+
+      const response = await fetch(apiUrl("/api/auth/me"), {
+        headers: await authHeaders()
+      });
+      if (!response.ok) {
+        await supabase.auth.signOut();
+        return false;
+      }
+
+      const { user } = await response.json();
+      if (user.role !== "admin") {
+        await supabase.auth.signOut();
+        throw new Error("Tu usuario no tiene permisos de administrador.");
+      }
+
+      document.body.classList.add("authenticated");
+      document.getElementById("admin-session-email").textContent = user.email || "";
+      await initConsole();
+      return true;
+    }
+
+    document.getElementById("admin-login-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const errorElement = document.getElementById("admin-login-error");
+      errorElement.textContent = "";
+      const form = new FormData(event.currentTarget);
+
+      const { error } = await supabase.auth.signInWithPassword({
+        email: form.get("email"),
+        password: form.get("password")
+      });
+      if (error) {
+        errorElement.textContent = "No se pudo iniciar sesión. Verifica tus credenciales.";
+        return;
+      }
+
+      try {
+        await authenticateAdmin();
+      } catch (authError) {
+        errorElement.textContent = authError.message;
+      }
+    });
+
+    document.getElementById("admin-logout").addEventListener("click", async () => {
+      await supabase.auth.signOut();
+      document.body.classList.remove("authenticated");
+    });
+
+    authenticateAdmin().catch((error) => {
+      document.getElementById("admin-login-error").textContent = error.message;
+    });
 
     function renderTable() {
       const tbody = document.getElementById("admin-books-table-body");

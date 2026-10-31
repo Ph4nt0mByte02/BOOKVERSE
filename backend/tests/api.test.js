@@ -70,15 +70,11 @@ async function runTests() {
       assert.strictEqual(bookRes.data.book.title, "Cien Años de Soledad");
       console.log("  ✓ /api/books/book-001 retornó el libro correcto");
 
-      // Test 4: Autenticación Admin
-      console.log("▶ [Test 4] Verificando Autenticación de Administrador...");
-      const loginRes = await makeRequest("/api/auth/login", "POST", {
-        email: "admin@bookverse.com",
-        password: "AdminBookverse2026!"
-      });
-      assert.strictEqual(loginRes.statusCode, 200);
-      assert.ok(loginRes.data.token, "Debe retornar un token JWT");
-      console.log("  ✓ Login de admin exitoso y JWT generado correctamente");
+      // Test 4: Endpoints administrativos protegidos
+      console.log("▶ [Test 4] Verificando protección de endpoints administrativos...");
+      const protectedRes = await makeRequest("/api/orders");
+      assert.strictEqual(protectedRes.statusCode, 401);
+      console.log("  ✓ Los endpoints administrativos requieren un JWT de Supabase");
 
       // Test 5: Simulación de Checkout
       console.log("▶ [Test 5] Verificando Registro de Pedido /api/orders...");

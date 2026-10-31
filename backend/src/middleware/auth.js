@@ -1,42 +1,39 @@
 // BOOKVERSE - Middleware de Autenticación JWT y Roles de Administrador
-import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+import { createRemoteJWKSet, jwtVerify } from "jose";
 
-const JWT_SECRET = process.env.JWT_SECRET || "bookverse_super_secret_jwt_key_2026_xyz";
-export const ADMIN_KEY = "bookverse-admin-2026";
+dotenv.config();
 
-export function authenticateToken(req, res, next) {
-  // 1. Clave administrativa directa de consola
-  const adminKey = req.headers["x-admin-key"] || req.query.admin_key;
-  if (adminKey === ADMIN_KEY) {
-    req.user = { id: 1, email: "admin@bookverse.com", name: "Administrador General", role: "admin" };
-    return next();
-  }
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_JWKS_URL = process.env.SUPABASE_JWKS_URL ||
+  (SUPABASE_URL ? `${SUPABASE_URL}/auth/v1/.well-known/jwks.json` : null);
+const jwks = SUPABASE_JWKS_URL ? createRemoteJWKSet(new URL(SUPABASE_JWKS_URL)) : null;
 
-  // 2. Token JWT estándar
+export async function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
-  const token = (authHeader && authHeader.split(" ")[1]) || req.query.token;
+  const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
 
-  if (!token) {
-    // Si viene de /consola o localhost en desarrollo, asignar sesión de admin para fluidez
-    if (req.headers["referer"] && req.headers["referer"].includes("/consola")) {
-      req.user = { id: 1, email: "admin@bookverse.com", name: "Administrador General", role: "admin" };
-      return next();
-    }
+  if (!token || !jwks) {
     return res.status(401).json({ success: false, message: "Token de acceso requerido" });
   }
 
-  jwt.verify(token, JWT_SECRET, (err, user) => {
-    if (err) {
-      // Si la clave interna es válida
-      if (token === ADMIN_KEY) {
-        req.user = { id: 1, email: "admin@bookverse.com", name: "Administrador General", role: "admin" };
-        return next();
-      }
-      return res.status(403).json({ success: false, message: "Token inválido o expirado" });
+  try {
+    const { payload } = await jwtVerify(token, jwks, {
+      issuer: SUPABASE_URL ? `${SUPABASE_URL}/auth/v1` : undefined,
+      audience: "authenticated"
     }
-    req.user = user;
+    );
+    const metadata = payload.app_metadata || {};
+    req.user = {
+      id: payload.sub,
+      email: payload.email,
+      name: payload.user_metadata?.name || payload.email,
+      role: metadata.role || "user"
+    };
     next();
-  });
+  } catch (error) {
+    return res.status(401).json({ success: false, message: "Token de Supabase inválido o expirado" });
+  }
 }
 
 export function requireAdmin(req, res, next) {
@@ -44,8 +41,4 @@ export function requireAdmin(req, res, next) {
     return res.status(403).json({ success: false, message: "Acceso denegado: se requieren privilegios de administrador" });
   }
   next();
-}
-
-export function generateToken(payload) {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: "48h" });
 }

@@ -77,16 +77,6 @@ CREATE TABLE IF NOT EXISTS orders (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Seed Default Admin User: admin@bookverse.com / AdminBookverse2026!
--- Bcrypt hash generated for AdminBookverse2026!
-INSERT INTO users (email, password_hash, name, role) 
-VALUES (
-    'admin@bookverse.com',
-    '$2a$10$w3X.f2jC4e8J5Yt1fC11yONd5jZ0y9R4KzGg4JkXQxM1K0JqVpT9u',
-    'Administrador Principal',
-    'admin'
-) ON CONFLICT (email) DO NOTHING;
-
 -- Seed Categories
 INSERT INTO categories (id, name, name_en, icon, book_count) VALUES
 ('fiction', 'Ficción', 'Fiction', '📖', 4),
